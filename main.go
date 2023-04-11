@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-func pingFun(ping chan int, pong chan int) {
+func pingFun(ping <-chan int, pong chan<- int) {
 	for {
 		<-ping
 		fmt.Println("Ping")
@@ -20,7 +20,7 @@ func pingFun(ping chan int, pong chan int) {
 	}
 }
 
-func pongFun(ping chan int, pong chan int) {
+func pongFun(ping chan<- int, pong <-chan int) {
 	for {
 		<-pong
 		fmt.Println("Pong")
